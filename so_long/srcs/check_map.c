@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:47:57 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/13 17:33:36 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:39:00 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static int	func_path_check(t_map *map)
 	if (flood_fill(map, map->p_y, map->p_x, tiles) == 0)
 	{
 		ft_printf("No valid path to all collectables and the exit\n");
+		ft_split_free(tiles);
 		return (1);
 	}
+	ft_split_free(tiles);
 	return (0);
 }
 

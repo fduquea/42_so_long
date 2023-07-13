@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:38:52 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/13 17:29:19 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:44:12 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ void	func_game(char *file)
 	t_map	map;
 
 	map.file = ft_strdup(file);
-	if (func_check_file(&map) == 1 || func_read_map(&map) == 1)
+	if (func_check_file(&map) == 1 || func_read_map(&map) == 1 || \
+		func_check_map(&map) == 1)
+	{
+		if (func_read_map(&map) == 0)
+			ft_split_free(map.map_tiles);
+		free(map.file);
 		return ;
-	if (func_check_map(&map) == 1)
-		return ;
+	}
 	ft_printf("Map is valid\n");
 	ft_split_free(map.map_tiles);
 	free(map.file);
