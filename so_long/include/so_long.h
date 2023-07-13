@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 21:55:58 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/10 17:25:26 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:33:50 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft_curr/include/libft.h"
 
-typedef struct s_map_file
+typedef struct s_map
 {
 	int		e;
 	int		c;
 	int		p;
 	int		lenght;
-	int		height;
-	int		fd;
-	char	**file;
-	char	**file_check;
+	int		rows;
+	char	*file;
+	char	**map_tiles;
 	int		p_x;
 	int		p_y;
-}	t_map_file;
+	int		i;
+	int		j;
+}	t_map;
 
-// map_checks
-int		func_square_check(t_map_file **map);
-int		func_closed_check(t_map_file *map);
-int		func_path_check(t_map_file **map);
-int		func_minimum_check(t_map_file **map);
-int		func_char_check(t_map_file *map);
-
-// utils
-void	find_p_pos(t_map_file **map);
-int		flood_fill(t_map_file **map, int x, int y);
+// check file
+int	func_check_file(t_map *map);
+// read map
+int	func_read_map(t_map *map);
+// check map
+int	func_check_map(t_map *map);
+// uitls
+int	flood_fill(t_map *map, int x, int y, char **path);
 
 #endif
