@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:47:57 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/13 17:39:00 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:22:47 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,18 +145,17 @@ static int	func_square_char_check(t_map *map)
 // 1010010010101010001001000000010101
 // 1P0000000C00C0000000000000000000C1
 // 1111111111111111111111111111111111.
-int	func_check_map(t_map *map)
+void	func_check_map(t_game *game)
 {
-	map->c = 0;
-	map->e = 0;
-	map->p = 0;
-	if (func_square_char_check(map) == 1)
-		return (1);
-	if (func_minimum_check(map) == 1)
-		return (1);
-	if (func_closed_check(map) == 1)
-		return (1);
-	if (func_path_check(map) == 1)
-		return (1);
-	return (0);
+	game->map->c = 0;
+	game->map->e = 0;
+	game->map->p = 0;
+	if (func_square_char_check(game->map) == 1)
+		func_exit_error("Map. Map is not a square or contains invalid characters.", game);
+	if (func_minimum_check(game->map) == 1)
+		func_exit_error("Map. Map might contain more than 1 exit or start position or doesn't contain a collectable.", game);
+	if (func_closed_check(game->map) == 1)
+		func_exit_error("Map. Map is not closed by walls.", game);
+	if (func_path_check(game->map) == 1)
+		func_exit_error("Map. At least one unavailable path to a coin/exit.", game);
 }

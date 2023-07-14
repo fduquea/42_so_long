@@ -6,7 +6,7 @@
 #    By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 19:52:32 by fduque-a          #+#    #+#              #
-#    Updated: 2023/07/13 17:03:33 by fduque-a         ###   ########.fr        #
+#    Updated: 2023/07/14 16:57:11 by fduque-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE = \033[0;97m
 
 NAME = so_long
 
-SRCS = srcs/main.c srcs/read_map.c srcs/check_file.c srcs/check_map.c srcs/utils.c
+SRCS = srcs/main.c srcs/read_map.c srcs/checks_file.c srcs/check_map.c srcs/utils.c srcs/start_game.c srcs/clean_and_exit.c
 # srcs/map_checks.c srcs/utils.c
 OBJS = ${SRCS:.c=.o}
 
