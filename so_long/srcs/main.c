@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:38:52 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/14 16:52:45 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:59:11 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	func_game(char *file)
 	func_read_map(&game, file);
 	func_check_map(&game);
 	func_init_game(&game);
-	sleep(2);
 	func_quit_game(&game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 21:55:58 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/14 16:52:18 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:57:58 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include "../lib/libft_curr/include/libft.h"
 
 # define SIZE	32
-# define WS		"assets/img/1.xpm"
-# define SS		"assets/img/0.xpm"
-# define CS		"assets/img/c.xpm"
-# define ES		"assets/img/e.xpm"
-# define PS		"assets/img/p.xpm"
+# define WS		"assets/img/wall.xpm"
+# define SS		"assets/img/empty.xpm"
+# define CS		"assets/img/coin.xpm"
+# define ES		"assets/img/exit.xpm"
+# define PS		"assets/img/player.xpm"
 
 typedef enum e_index
 {
