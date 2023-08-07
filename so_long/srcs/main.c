@@ -6,11 +6,18 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:38:52 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/31 11:59:11 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:24:40 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	func_quit_request(t_game *game)
+{
+	ft_printf("You gave up!\n");
+	func_quit_game(game);
+	return (0);
+}
 
 // all the game
 void	func_game(char *file)
@@ -24,6 +31,9 @@ void	func_game(char *file)
 	func_read_map(&game, file);
 	func_check_map(&game);
 	func_init_game(&game);
+	mlx_hook(game.screen.win, 2, 1L<<0, func_keypress, &game);
+	mlx_hook(game.screen.win, 17, 0, func_quit_request, &game);
+	mlx_loop(game.screen.mlx);
 	func_quit_game(&game);
 }
 

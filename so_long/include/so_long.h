@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 21:55:58 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/31 11:57:58 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:30:07 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,21 @@
 # define ES		"assets/img/exit.xpm"
 # define PS		"assets/img/player.xpm"
 
+typedef enum e_key
+{
+	W = 119,
+	A = 97,
+	S = 115,
+	D = 100,
+	ESC = 65307,
+}				t_key;
+
 typedef enum e_index
 {
 	W1,
-	S1,
-	C1,
 	E1,
+	C1,
+	X1,
 	P1,
 }					t_id;
 
@@ -73,7 +82,7 @@ typedef struct s_game
 	t_point		curr;
 	t_point		next;
 	t_graphics	screen;
-	t_sprite	*sprite;
+	t_sprite	sprite[5];
 	int			moves;
 }					t_game;
 
@@ -91,10 +100,11 @@ void	func_quit_game(t_game *so_long);
 void	func_exit_error(char *message, t_game *game);
 // init game
 void	func_init_game(t_game *game);
-// // load sprites
-// void	func_load_sprites(t_game *game);
-// // render map
-// void	func_render_map(t_game *game);
-// // render sprites
-// void	func_render_sprites(t_game *game);
+
+int		func_keypress(int keycode, t_game *game);
+
+int		func_quit_request(t_game *game);
+
+int	func_keypress(int keycode, t_game *game);
+
 #endif

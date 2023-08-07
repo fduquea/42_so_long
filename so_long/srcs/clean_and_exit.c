@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:49:53 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/07/14 16:46:28 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/07 10:59:43 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,17 @@ static void	func_clean_map(t_map *map)
     if (map->map_tiles[0] != NULL)
         func_clean_tiles(map->map_tiles);
 }
-
 static void	func_clean_sprites(t_game *so_long)
 {
-	int	i;
+    int	i;
 
-	i = 0;
-	while (i < 5) // 01EPC
-	{
-		mlx_destroy_image(so_long->screen.mlx, so_long->sprite[i].img);
-		i++;
-	}
-	free (so_long->sprite);
+    i = 0;
+    while (i < 5) // 01EPC
+    {
+		if (so_long->sprite[i].img)
+        	mlx_destroy_image(so_long->screen.mlx, so_long->sprite[i].img);
+        i++;
+    }
 }
 
 void	func_clear_game(t_game *so_long)
@@ -54,8 +53,7 @@ void	func_clear_game(t_game *so_long)
 		func_clean_map(so_long->map);
 //		free(so_long->map);
 	}
-	if (so_long->sprite)
-		func_clean_sprites(so_long);
+	func_clean_sprites(so_long);
 	if (so_long->screen.win)
 		mlx_destroy_window(so_long->screen.mlx, so_long->screen.win);
 	if (so_long->screen.mlx)
