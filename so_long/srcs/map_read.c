@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 14:30:09 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/08/07 11:49:22 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/10 00:43:01 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	**func_get_map(t_map *map, char *file)
 	return (tiles);
 }
 
-static int	func_get_rows(char *file)
+int	func_get_rows(char *file)
 {
 	char	*line;
 	int		i;
@@ -70,12 +70,12 @@ void	func_read_map(t_game *game, char *file)
 	rows = func_get_rows(file);
 	game->map->rows = rows;
 	if (rows < 3)
-		func_exit_error("Map. Invalid number of rows.\n", game);
+		func_exit_error("Map. Invalid number of rows.", game);
 	game->map->map_tiles = func_get_map(game->map, file);
 	if (!game->map->map_tiles)
-		func_exit_error("Map. Malloc error.\n", game);
+		func_exit_error("Map. Malloc error.", game);
 	game->map->lenght = ft_strlen(game->map->map_tiles[0]);
 	if (game->map->lenght < 3)
-		func_exit_error("Map. Invalid number of columns.\n", game);
+		func_exit_error("Map. Invalid number of columns.", game);
 	close(fd);
 }

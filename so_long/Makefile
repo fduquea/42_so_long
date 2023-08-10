@@ -6,7 +6,7 @@
 #    By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 19:52:32 by fduque-a          #+#    #+#              #
-#    Updated: 2023/08/07 13:38:33 by fduque-a         ###   ########.fr        #
+#    Updated: 2023/08/10 00:51:40 by fduque-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,14 @@ re: fclean all
 	@ echo "$(GRAY)| $(RED)X Cleaned X $(YELLOW)and $(GREEN)! Rebuilt ! $(YELLOW)everything for so_long $(GRAY)|$(DEF_COLOR)"
 	@ echo "$(GRAY)*----------------------------------------------------*$(DEF_COLOR)"
 
-run: ${NAME}
-	@ ./${NAME}
+check_leaks:
+	@ for map in ../so_long_invalidator/maps/*/*; do \
+		echo "$(YELLOW)Checking for leaks in $$map$(DEF_COLOR)"; \
+		if valgrind --leak-check=full --show-leak-kinds=all ./so_long $$map 2>&1 | grep -q "no leaks are possible"; then \
+			echo "$(GREEN)No leaks found in $$map$(DEF_COLOR)"; \
+		else \
+			echo "$(RED)Leaks found in $$map$(DEF_COLOR)"; \
+		fi \
+	done
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re 

@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 21:55:58 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/08/07 16:30:07 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/10 00:45:03 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@
 # include "../lib/libft_curr/include/libft.h"
 
 # define SIZE	32
-# define WS		"assets/img/wall.xpm"
-# define SS		"assets/img/empty.xpm"
-# define CS		"assets/img/coin.xpm"
-# define ES		"assets/img/exit.xpm"
-# define PS		"assets/img/player.xpm"
+# define WS		"assets/textures/wall.xpm"
+# define ES		"assets/textures/empty.xpm"
+# define CS		"assets/textures/coin.xpm"
+# define XS		"assets/textures/exit.xpm"
+# define PWS	"assets/textures/player1.xpm"
+# define PDS	"assets/textures/player2.xpm"
+# define PSS	"assets/textures/player3.xpm"
+# define PAS	"assets/textures/player4.xpm"
+# define MIX	"assets/textures/mix.xpm"
 
 typedef enum e_key
 {
@@ -39,6 +43,10 @@ typedef enum e_index
 	C1,
 	X1,
 	P1,
+	P2,
+	P3,
+	P4,
+	M1,
 }					t_id;
 
 typedef struct s_point
@@ -82,12 +90,13 @@ typedef struct s_game
 	t_point		curr;
 	t_point		next;
 	t_graphics	screen;
-	t_sprite	sprite[5];
+	t_sprite	sprite[9];
 	int			moves;
+	int			exit;
 }					t_game;
 
 // check file
-void	func_check_file(t_game *game, char *file);
+void	func_check_file(char *file);
 // read map
 void	func_read_map(t_game *game, char *file);
 // check map
@@ -105,6 +114,6 @@ int		func_keypress(int keycode, t_game *game);
 
 int		func_quit_request(t_game *game);
 
-int	func_keypress(int keycode, t_game *game);
+int	func_get_rows(char *file);
 
 #endif

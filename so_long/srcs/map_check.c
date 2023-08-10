@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 10:47:57 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/08/07 11:49:51 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/10 01:14:59 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	func_path_check(t_map *map)
 	}
 	if (flood_fill(map, map->p_y, map->p_x, tiles) == 0)
 	{
-		ft_printf("No valid path to all collectables and the exit\n");
 		ft_split_free(tiles);
 		return (1);
 	}
@@ -112,7 +111,7 @@ static int	func_square_char_check(t_map *map)
 			if (map->map_tiles[i][j] != '0' && map->map_tiles[i][j] != '1' &&
 				map->map_tiles[i][j] != 'C' && map->map_tiles[i][j] != 'E' &&
 				map->map_tiles[i][j] != 'P')
-				return (0);
+				return (1);
 			j++;
 		}
 		if (ft_strlen(map->map_tiles[i]) != ft_strlen(map->map_tiles[i - 1]))
@@ -153,11 +152,14 @@ void	func_check_map(t_game *game)
 	game->map->e = 0;
 	game->map->p = 0;
 	if (func_square_char_check(game->map) == 1)
-		func_exit_error("Map. Map is not a square or contains invalid characters.", game);
+		func_exit_error("Map is either not a square or "
+			"contains invalid characters.", game);
 	if (func_minimum_check(game->map) == 1)
-		func_exit_error("Map. Map might contain more than 1 exit or start position or doesn't contain a collectable.", game);
+		func_exit_error("Map either contains more than "
+			"1 exit, start position or doesn't contain any collectable.", game);
 	if (func_closed_check(game->map) == 1)
-		func_exit_error("Map. Map is not closed by walls.", game);
+		func_exit_error("Map is not closed by walls.", game);
 	if (func_path_check(game->map) == 1)
-		func_exit_error("Map. At least one unavailable path to a coin/exit.", game);
+		func_exit_error("There is at least one \
+		unavailable path to a coin/exit.", game);
 }
