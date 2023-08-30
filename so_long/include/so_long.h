@@ -6,7 +6,7 @@
 /*   By: fduque-a <fduque-a@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 21:55:58 by fduque-a          #+#    #+#             */
-/*   Updated: 2023/08/10 00:45:03 by fduque-a         ###   ########.fr       */
+/*   Updated: 2023/08/10 09:35:56 by fduque-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ int		func_keypress(int keycode, t_game *game);
 
 int		func_quit_request(t_game *game);
 
-int	func_get_rows(char *file);
+int		func_get_rows(char *file);
 
 #endif
